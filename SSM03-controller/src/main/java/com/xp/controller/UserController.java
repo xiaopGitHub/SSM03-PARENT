@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -50,7 +51,8 @@ public class UserController {
     public @ResponseBody
     JSON queryComment(Integer pageNumber, Integer pageSize) {
         PageHelper.startPage(pageNumber, pageSize, "c_id desc");
-        List<Comment> comments = commentService.selectComments();
+        List<Comment> comments=commentService.selectComments();
+        System.out.println(comments.get(1).getContext());
         PageInfo<Comment> pageInfo=new PageInfo<>(comments);
         JSON json = new JSON(200, "1", pageInfo);
         return json;

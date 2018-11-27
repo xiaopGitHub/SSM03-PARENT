@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 </head>
 <body>
-<form action="loginUser" style="width: 400px;margin-left: 400px">
+<form action="loginUser" style="width: 400px;margin-left: 400px" method="post">
     <div class="form-group">
         <label for="username">用户名</label>
         <input type="text" class="form-control" id="username" name="username">

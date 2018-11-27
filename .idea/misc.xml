@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/SSM03-common" />
+    <file type="web" url="file://$PROJECT_DIR$/SSM03-controller" />
+    <file type="web" url="file://$PROJECT_DIR$/SSM03-dao" />
+    <file type="web" url="file://$PROJECT_DIR$/SSM03-service" />
+    <file type="web" url="file://$PROJECT_DIR$/SSM03-vo" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="SvnBranchConfigurationManager">
+    <option name="myConfigurationMap">
+      <map>
+        <entry key="$PROJECT_DIR$">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="trunkUrl" value="http://www.svnchina.com/svn2/ssm03/SSM03-PARENT" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/SSM03-vo">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="http://www.svnchina.com/svn2/ssm03/SSM03-vo/branches" />
+                  <option value="http://www.svnchina.com/svn2/ssm03/SSM03-vo/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="http://www.svnchina.com/svn2/ssm03/SSM03-vo/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
