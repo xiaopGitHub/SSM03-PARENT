@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 
 /**
  * @author xp
@@ -36,10 +38,10 @@ public class UserController {
         User user = userService.selectUser(userName, userPwd);
         if (user != null) {
             System.out.println("登录成功");
-//            request.getSession().setAttribute("user", user);
+//          request.getSession().setAttribute("user", user);
             session.setAttribute("user", new User());
             //设置超时无效
-            session.setMaxInactiveInterval(-1);
+//            session.setMaxInactiveInterval(-1);
             return "comment_view/comment";
         } else {
             System.out.println("登录失败");
@@ -50,17 +52,15 @@ public class UserController {
     @RequestMapping("/queryComment")
     public @ResponseBody
     JSON queryComment(Integer pageNumber, Integer pageSize) {
-        PageHelper.startPage(pageNumber, pageSize, "c_id desc");
-        List<Comment> comments=commentService.selectComments();
-        System.out.println(comments.get(1).getContext());
-        PageInfo<Comment> pageInfo=new PageInfo<>(comments);
-        JSON json = new JSON(200, "1", pageInfo);
-        return json;
+        Map<String,Integer> map=new HashMap<>();
+        map.put("pageNumber", pageNumber);
+        map.put("pageSize", pageSize);
+        return commentService.selectComments(map);
     }
 
     @RequestMapping("/deleteComment")
     public @ResponseBody JSON deleteProduct(@RequestParam("id") Integer id) {
-        //接收前端传递的数组@RequestParam("array[]") Integer[] array
+        //接收前端传递的数组@RequestParam("array[]") Integer[] array)
         int row=commentService.deleteComment(id);
         JSON json=new JSON(200,"success" ,row );
         return json;
@@ -74,7 +74,6 @@ public class UserController {
 
     @RequestMapping("/updateComment")
     public String updateProduct(@ModelAttribute Comment comment) {
-        System.out.println(comment);
         commentService.updateComment(comment);
         /*
         返回值通过视图解析器解析为实际视图,解析器通过prefix+返回值+suffix获取完整视图路径,

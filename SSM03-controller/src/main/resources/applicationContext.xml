@@ -39,7 +39,6 @@
     <!-- 扫描所有mapper接口文件 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.xp.dao"/>
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 
     <!-- 事务管理 -->
@@ -47,16 +46,16 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <!-- 事务 -->
-    <aop:config>
-        <aop:pointcut expression="execution(* com.xp.service.*.*(..))" id="point"/>
-        <aop:advisor advice-ref="xp" pointcut-ref="point"/>
-    </aop:config>
+    <!-- 广播 -->
     <tx:advice id="xp" transaction-manager="transactionManager">
         <tx:attributes>
             <tx:method name="*"/>
         </tx:attributes>
     </tx:advice>
+    <aop:config>
+        <aop:pointcut expression="execution(* com.xp.service.*.*(..))" id="xppoint"/>
+        <aop:advisor advice-ref="xp" pointcut-ref="xppoint"/>
+    </aop:config>
 
     <!-- 加载其他配置文件 -->
     <context:property-placeholder location="classpath:jdbc.properties"/>

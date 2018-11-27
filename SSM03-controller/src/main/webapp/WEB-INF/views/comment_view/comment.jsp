@@ -82,7 +82,6 @@
                     <div class="form-group" style="margin-top: 5px">
                         <label for="commentDate2" class="col-sm-2 control-label">评论日期</label>
                         <div class="col-sm-10">
-                            <input type="text" hidden id="id2" name="id">
                             <input type="text" class="form-control" id="commentDate2" name="commentDate">
                         </div>
                     </div>
@@ -114,7 +113,7 @@
             showRefresh: true,                  //是否显示刷新按钮
             clickToSelect: true,                //是否启用点击选中行
             height: 500,                        //行高,如果没有设置height属性,表格自动根据记录条数觉得表格高度
-            uniqueId: "c_id",                   //每一行的唯一标识,一般为主键列
+            uniqueId: "cId",                   //每一行的唯一标识,一般为主键列
             responseHandler: responseHandler,
 
             columns: [{
@@ -138,7 +137,7 @@
                 formatter:function(value,row,index){
                     var element =
                         "<button class='btn btn-default' data-toggle='modal' data-target='#myModal2' onclick='javascript:updInfo(this)'>编辑</button> "+
-                        "<button class='btn btn-default' onclick='javascript:delCom("+row.id+")'>删除</button> ";
+                        "<button class='btn btn-default' onclick='javascript:delCom("+row.cId+")'>删除</button> ";
                     return element;
                 }
             },]
@@ -172,6 +171,7 @@
 
     //删除
     function delCom(id) {
+        console.log(id);
         //声明一个数组var record_idArray =[1,2,3,4,5,6];  record_idArray.push(value)
         $.ajax({
             url:"deleteComment",
@@ -190,10 +190,11 @@
 
     //修改
     function updInfo(obj){
+        console.log($(obj).parents("tr").attr("data-uniqueid"));
         //获取选中行的数据
         $("#cid2").val($(obj).parents("tr").attr("data-uniqueid"));
-        $("#context2").val($(obj).parents("tr").find("td").eq(1).text());
-        $("#commentDate2").val($(obj).parents("tr").find("td").eq(2).text());
+        $("#context2").val($(obj).parents("tr").find("td").eq(2).text());
+        $("#commentDate2").val($(obj).parents("tr").find("td").eq(3).text());
     }
 
 </script>

@@ -73,6 +73,7 @@
         where c_id = #{cId,jdbcType=INTEGER}
     </update>
 
+
     <update id="updateByPrimaryKey" parameterType="com.xp.vo.Comment">
         update comment
         set b_id = #{bId,jdbcType=INTEGER},

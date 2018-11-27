@@ -1,5 +1,8 @@
 package com.xp.service.implement;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.xp.common.JSON;
 import com.xp.dao.CommentMapper;
 import com.xp.service.ICommentService;
 import com.xp.vo.Comment;
@@ -21,8 +24,12 @@ public class CommentService implements ICommentService {
     private CommentMapper commentMapper;
 
     @Override
-    public List<Comment> selectComments() {
-        return commentMapper.selectComments();
+    public JSON selectComments(Map<String,Integer> map) {
+        PageHelper.startPage(map.get("pageNumber"), map.get("pageSize"), "c_id desc");
+        List<Comment> comments=commentMapper.selectComments();
+        PageInfo<Comment> pageInfo=new PageInfo<>(comments);
+        JSON json = new JSON(200, "1", pageInfo);
+        return json;
     }
 
     @Override
@@ -43,6 +50,6 @@ public class CommentService implements ICommentService {
 
     @Override
     public int updateComment(Comment comment) {
-        return commentMapper.updateByPrimaryKey(comment);
+        return commentMapper.updateByPrimaryKeySelective(comment);
     }
 }

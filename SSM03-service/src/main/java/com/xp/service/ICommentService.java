@@ -1,8 +1,10 @@
 package com.xp.service;
 
+import com.xp.common.JSON;
 import com.xp.vo.Comment;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author xp
@@ -12,7 +14,7 @@ import java.util.List;
 public interface ICommentService {
 
     /*查询所有评论*/
-    List<Comment> selectComments();
+    JSON selectComments(Map<String,Integer> map);
 
     /*删除指定评论*/
     Integer deleteComment(Integer id);
