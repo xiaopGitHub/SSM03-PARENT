@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--配置分页插件及属性-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <property name="helperDialect" value="mysql"/>
+            <!--配置reasonable为true,这时如果pageNum<=0会查询第一页,
+            如果pageNum>总页数会查询最后一页,为false时,超出页数不输出任何数据-->
+            <property name="reasonable" value="true"/>
+            <!--用类似Mybatis式的命名空间调用方式，你也许会用到rowBoundsWithCount,
+            分页插件对RowBounds支持和 MyBatis 默认的方式是一致,
+            默认情况下不会进行 count 查询，如果你想在分页查询时进行count查询,
+            以及使用更强大的 PageInfo 类，你需要设置该参数为 true-->
+            <property name="rowBoundsWithCount" value="true"/>
+            <!--你觉得RowBounds中的两个参数offset,limit不如pageNum,pageSize容易理解,
+            你可以使用 offsetAsPageNum 参数,将该参数设置为true后,offset会当成pageNum使用,
+            limit 和 pageSize 含义相同-->
+            <property name="offsetAsPageNum" value="true"/>
+            <!--如果觉得某个地方使用分页后,你仍然想通过控制参数查询全部的结果,
+            你可以配置pageSizeZero为true,配置后,当pageSize=0或者RowBounds.limit = 0
+            就会查询出全部的结果-->
+            <property name="pageSizeZero" value="true"/>
+        </plugin>
+    </plugins>
+
+</configuration>
