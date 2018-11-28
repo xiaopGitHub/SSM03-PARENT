@@ -20,8 +20,15 @@ import java.util.Map;
  */
 @Service
 public class CommentService implements ICommentService {
+
+/*    @Autowired
+    private CommentMapper commentMapper;*/
+
+    private final CommentMapper commentMapper;
     @Autowired
-    private CommentMapper commentMapper;
+    public CommentService(CommentMapper commentMapper) {
+        this.commentMapper = commentMapper;
+    }
 
     @Override
     public JSON selectComments(Map<String,Integer> map) {
