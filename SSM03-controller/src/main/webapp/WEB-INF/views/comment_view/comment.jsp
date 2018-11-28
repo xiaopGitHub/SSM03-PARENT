@@ -23,6 +23,7 @@
         <button class="btn btn-default" data-toggle='modal' data-target='#myModal' type="button" style="margin-left: 1085px">添加</button>
     </table>
 </div>
+<a href="showbh">博客历史管理</a>
 <!-- 模态框1（Modal）用于添加评论 -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
